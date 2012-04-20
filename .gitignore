@@ -15,3 +15,15 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+/images/rails_welcome.png
+/images/sample/fjdskafdkasfdsaf_html_1ceb4e50.gif
+/images/sample/fjdskafdkasfdsaf_html_1dd5d304.png
+/images/sample/fjdskafdkasfdsaf_html_43536aa8.png
+/images/sample/fjdskafdkasfdsaf_html_465cc54d.png
+/images/sample/fjdskafdkasfdsaf_html_734e99e5.jpg
+/images/sample/fjdskafdkasfdsaf_html_699d6865.png
+/images/sample/fjdskafdkasfdsaf_html_m6e037855.png
+/stylesheets/bootstrap.min.css
+/views/example.html
+/views/sample.html
+/stylesheets/style.css
