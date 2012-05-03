@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+#
+ROOT = File.expand_path("../../", __FILE__)
+$LOAD_PATH.unshift(File.join(ROOT, "lib"))
+
+require 'optparse'
+require "lm2doc"
+
+
+options = {
+  :theme => "bootstrap"
+}
+
+opts = OptionParser.new do |opts|
+  opts.banner = "lm2doc is a converter for lightweight markup language to pretty html document."
+  opts.separator ""
+  opts.separator "Usage:"
+  opts.separator "    lm2doc [OPTION]... FILE"
+  opts.separator ""
+  
+  opts.separator "Options:"
+  opts.on("-t", "--theme=NAME", "output html theme: bootstap (default)") {|v| options[:theme] = v }
+  opts.on("-v", "--version", "show the version of lm2doc") { puts Lm2doc::VERSION; exit }
+
+end
+opts.parse!
+
+if ARGV.empty?
+  puts opts.help()
+  exit
+end
+
+file = ARGV[0]
+text = File.read(file)
+
+require "kramdown"
+@body = Kramdown::Document.new(text).to_html
+@title = file
+
+require 'erb'
+require "pry"
+erb_file = File.join(ROOT, "themes", options[:theme], "template.html.erb")
+template = ERB.new(File.read(erb_file))
+puts template.result(binding)
+
