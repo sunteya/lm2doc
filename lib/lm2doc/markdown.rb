@@ -1,32 +1,29 @@
+require_relative 'source'
 require "kramdown"
+require "nokogiri"
 
 module Lm2doc
   
-  class Markdown < Resource
+  class Markdown < Source
     
-    def initialize(*args)
-      super
-    end
-    
-    def output(dir, options)
-      theme = options[:theme]
-      resources = self.process(theme)
+    def convert
+      html = Kramdown::Document.new(self.content).to_html
       
-      resources.each do |resource|
-        resource.output(dir, options)
-      end
+      doc = Nokogiri::HTML::DocumentFragment.parse(html)
+      down_heading(doc)
+      doc.to_html
     end
     
-    def process(theme)
-      source = File.join(self.base, self.file)
-      text = File.read(source)
-      body = Kramdown::Document.new(text).to_html
-      result = {
-        :base => self.base,
-        :file => self.file,
-        :article => body
-      }
-      theme.render(result)
+    def down_heading(doc)
+      doc.css("h3").each {|n| n.name = "h4" }
+      doc.css("h2").each {|n| n.name = "h3" }
+      doc.css("h1").each {|n| n.name = "h2" }
+    end
+    
+    class << self
+      def perfer_exts
+        %w[ .md ]
+      end
     end
     
   end

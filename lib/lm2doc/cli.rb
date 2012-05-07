@@ -2,10 +2,9 @@ require "lm2doc"
 require 'optparse'
 require "pry"
 
-# binding.pry
-options = {
-  :theme => "bootstrap"
-}
+
+theme_name = "bootstrap"
+options = { }
 
 opts = OptionParser.new do |opts|
   opts.banner = "lm2doc is a converter for lightweight markup language to pretty html document."
@@ -15,8 +14,8 @@ opts = OptionParser.new do |opts|
   opts.separator ""
   
   opts.separator "Options:"
-  opts.on("-t", "--theme NAME", "output html theme: bootstap (default)") {|v| options[:theme] = v }
   opts.on("-v", "--version", "show the version of lm2doc") { puts Lm2doc::VERSION; exit }
+  # opts.on("-t", "--theme NAME", "output html theme: bootstap (default)") {|v| options[:theme] = v }
   opts.on("-o", "--out DIR", "output result dir") {|v| options[:out] = v }
 end
 opts.parse!
@@ -26,17 +25,9 @@ if ARGV.length != 1
   exit
 end
 
-raise OptionParser::MissingArgument if options[:out].nil?
+file_or_dir = ARGV[0]
 
+theme = Lm2doc::Theme.new(theme_name)
+theme.generate(file_or_dir, options)
 
-path = ARGV[0]
-
-source = Lm2doc::Source.build(path)
-source.render!(options)
-
-# text = File.read(file)
-
-# result = Lm2doc::Converter.new(path).convert!
-# html = .render(result)
-# puts html
 
