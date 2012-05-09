@@ -7,7 +7,9 @@ module Lm2doc
   class Markdown < Source
     
     def convert
-      html = Kramdown::Document.new(self.content).to_html
+      html = Kramdown::Document.new(self.content, 
+        :coderay_line_numbers => :table
+      ).to_html
       
       doc = Nokogiri::HTML::DocumentFragment.parse(html)
       down_heading(doc)

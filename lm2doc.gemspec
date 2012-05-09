@@ -14,12 +14,18 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = "0.0.1"
   
-  gem.add_dependency "active_attr"
-  gem.add_dependency "kramdown"
-  gem.add_dependency "compass"
-  gem.add_dependency "nokogiri"
-  gem.add_dependency "hashie"
 
+  gem.add_dependency "active_attr"
+  gem.add_dependency "hashie"
+  gem.add_dependency "nokogiri"
+  
+  gem.add_dependency "kramdown"
+  gem.add_dependency "coderay"
+  
+  gem.add_dependency "compass"
+  gem.add_dependency "bootstrap-sass"
+  
+  
   gem.add_development_dependency "rake"
   gem.add_development_dependency "version"
   gem.add_development_dependency "pry"

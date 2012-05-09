@@ -1,35 +1,39 @@
 require_relative 'theme/static_resource'
 require_relative 'theme/content_resource'
-require_relative 'theme/scss_resource'
+require_relative 'theme/compass_resource'
 require 'erb'
 
 module Lm2doc
   
   def self.theme(name)
-    Theme.new(name)
+    require Lm2doc.root.join("themes", name, "init.rb")
+    Theme.instance(name)
   end
   
   class Theme
     
-    attr_accessor :name
-    
-    def initialize(name)
-      self.name = name
+    class << self
+      def register(name, theme)
+        @pool ||= {}
+        @pool[name] = theme
+      end
+      
+      def instance(name)
+        @pool ||= {}
+        @pool[name]
+      end
     end
     
-    def theme_dir_pathname
-      Lm2doc.root.join("themes", self.name)
-    end
+    attr_accessor :dir
     
     def theme_file_pathname(file)
-      theme_dir_pathname.join(file)
+      self.dir.join(file)
     end
     
     def assets
       [
-        ScssResource.new(
-          :scss_pathname => theme_dir_pathname,
-          :files => [ "style.scss" ]
+        CompassResource.new(
+          :scss_pathname => self.dir.to_s
         )
       ]
     end

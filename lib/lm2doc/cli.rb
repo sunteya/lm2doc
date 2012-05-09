@@ -27,7 +27,7 @@ end
 
 file_or_dir = ARGV[0]
 
-theme = Lm2doc::Theme.new(theme_name)
+theme = Lm2doc.theme(theme_name)
 theme.generate(file_or_dir, options)
 
 
