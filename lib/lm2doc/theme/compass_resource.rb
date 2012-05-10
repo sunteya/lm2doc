@@ -11,7 +11,7 @@ module Lm2doc
           tmpdir = Pathname.new(tmppath)
           Compass.configuration.sass_path = self.scss_pathname
           Compass.configuration.css_path = tmpdir.to_s
-          update_project = Compass::Commands::UpdateProject.new(Lm2doc.root.join("tmp").to_s, {})
+          update_project = Compass::Commands::UpdateProject.new(Lm2doc.root.join("tmp").to_s, { quiet: true })
           update_project.perform
           
           tmpdir.children.each do |child|
