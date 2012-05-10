@@ -8,12 +8,22 @@ module Lm2doc
     
     def convert
       html = Kramdown::Document.new(self.content, 
-        :coderay_line_numbers => :table
+        coderay_line_numbers: :table
       ).to_html
       
       doc = Nokogiri::HTML::DocumentFragment.parse(html)
+      
+      figure_role(doc)
       # down_heading(doc)
       doc.to_html
+    end
+    
+    def figure_role(doc)
+      doc.css("p[role=figure]").each do |p|
+        p.remove_attribute "role"
+        p.name = "figure"
+        p.css("strong").each {|s| s.name = "figcaption" }
+      end
     end
     
     def down_heading(doc)
