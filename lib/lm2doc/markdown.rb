@@ -8,7 +8,7 @@ module Lm2doc
     def convert
       html = Kramdown::Document.new(self.content, 
         coderay_line_numbers: :table,
-        toc_levels: => [ 2, 3 ]
+        toc_levels: [ 2, 3 ]
       ).to_html
 
       doc = Nokogiri::HTML::DocumentFragment.parse(html)
