@@ -7,3 +7,17 @@ Gemfile.lock
 tmp
 examples
 .sass-cache
+/images/rails_welcome.png
+/images/sample/fjdskafdkasfdsaf_html_1ceb4e50.gif
+/images/sample/fjdskafdkasfdsaf_html_1dd5d304.png
+/images/sample/fjdskafdkasfdsaf_html_43536aa8.png
+/images/sample/fjdskafdkasfdsaf_html_465cc54d.png
+/images/sample/fjdskafdkasfdsaf_html_699d6865.png
+/images/sample/fjdskafdkasfdsaf_html_734e99e5.jpg
+/images/sample/fjdskafdkasfdsaf_html_m6e037855.png
+/views/example.html
+/views/mam_apis.md
+/views/sample.html
+/mam_apis/mam_apis.html
+/mam_apis/style.css
+/stylesheets/bootstrap.min.css

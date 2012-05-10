@@ -7,6 +7,7 @@ module Lm2doc
     class CompassResource < Hashie::Mash
       
       def file_out(dir, options = {})
+        FileUtils.mkdir_p(Lm2doc.root.join("tmp"))
         Dir.mktmpdir(nil, Lm2doc.root.join("tmp")) do |tmppath|
           tmpdir = Pathname.new(tmppath)
           Compass.configuration.sass_path = self.scss_pathname

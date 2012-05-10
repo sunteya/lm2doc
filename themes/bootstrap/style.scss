@@ -58,6 +58,11 @@ article {
 			text-align: center;
 			font-style: italic;
 		}
+		
+		table {
+			@extend .table;
+			@extend .table-bordered;
+		}
 	}
 }
 

@@ -5,12 +5,12 @@ require "nokogiri"
 module Lm2doc
   
   class Markdown < Source
-    
     def convert
       html = Kramdown::Document.new(self.content, 
-        coderay_line_numbers: :table
+        coderay_line_numbers: :table,
+        toc_levels: => [ 2, 3 ]
       ).to_html
-      
+
       doc = Nokogiri::HTML::DocumentFragment.parse(html)
       
       figure_role(doc)
