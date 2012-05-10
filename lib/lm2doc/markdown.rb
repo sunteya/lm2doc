@@ -12,7 +12,7 @@ module Lm2doc
       ).to_html
       
       doc = Nokogiri::HTML::DocumentFragment.parse(html)
-      down_heading(doc)
+      # down_heading(doc)
       doc.to_html
     end
     
