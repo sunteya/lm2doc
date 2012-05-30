@@ -78,11 +78,15 @@ article {
 			margin: 0;
 			padding: 8px;
 			white-space: pre;
+			border: none;
 		}
 	}
 	
+	.code {
+		width: 100%;
+	}
+	
 	.code pre {
-		border-left: none;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		

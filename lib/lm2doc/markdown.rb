@@ -8,6 +8,7 @@ module Lm2doc
     def convert
       html = Kramdown::Document.new(self.content, 
         coderay_line_numbers: :table,
+        coderay_tab_width: 4,
         toc_levels: [ 2, 3 ]
       ).to_html
 
