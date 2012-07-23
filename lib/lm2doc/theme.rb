@@ -54,7 +54,7 @@ module Lm2doc
       if markup_class
         text = dir.join(relative_pathname).read
         html = markup_class.new(:content => text).as_html
-        content = render(:article => html, :title => "foo")
+        content = render(:article => html)
         
         ContentResource.new(relative_pathname.to_s.sub(extname, ".html"), content)
       end
