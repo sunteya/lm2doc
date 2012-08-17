@@ -23,6 +23,8 @@ module Lm2doc
       doc.css("p[role=figure]").each do |p|
         p.remove_attribute "role"
         p.name = "figure"
+        p["class"] = "thumbnail"
+        p.css("em").each {|s| s.name = "figcaption" }
         p.css("strong").each {|s| s.name = "figcaption" }
       end
     end
