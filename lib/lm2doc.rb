@@ -6,11 +6,6 @@ module Lm2doc
   def self.root
     Pathname.new(File.expand_path("../../", __FILE__))
   end
-  
-  
-  def method_name
-    
-  end
 end
 
 require_relative 'lm2doc/markdown'

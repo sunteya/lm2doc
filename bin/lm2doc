@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 
-lib_path = File.expand_path("../../lib", __FILE__)
-$:.unshift(lib_path) if !$:.include?(lib_path)
+require "bundler/setup"
+Bundler.require(:default, :development)
+require_relative '../lib/lm2doc/cli'
 
-require "lm2doc/cli"
-
-
+Lm2doc::Cli.new(ARGV).execute

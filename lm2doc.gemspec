@@ -15,6 +15,8 @@ Gem::Specification.new do |gem|
   gem.version       = "0.0.1"
   
 
+  gem.add_dependency "bundler"
+  
   gem.add_dependency "active_attr"
   gem.add_dependency "hashie"
   gem.add_dependency "nokogiri"
@@ -26,8 +28,10 @@ Gem::Specification.new do |gem|
   gem.add_dependency "bootstrap-sass"
   
   
+  # Test & Development
   gem.add_development_dependency "rake"
-  gem.add_development_dependency "version"
   gem.add_development_dependency "pry"
+  gem.add_development_dependency "version"
   
+  gem.add_development_dependency "rspec"
 end
