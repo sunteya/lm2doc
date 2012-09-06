@@ -12,9 +12,9 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "lm2doc"
   gem.require_paths = ["lib"]
-  gem.version       = "0.0.1"
+  gem.version       = File.read(File.expand_path("../VERSION", __FILE__)).chomp
   
-
+  
   gem.add_dependency "bundler"
   
   gem.add_dependency "active_attr"

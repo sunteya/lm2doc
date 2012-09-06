@@ -89,8 +89,8 @@ module Lm2doc
       resources = build_resources(file_or_dir)
       
       resources.each do |resource|
-        if options[:out]
-          resource.file_out(options[:out], options)
+        if options[:output]
+          resource.file_out(options[:output], options)
         else
           out = resource.print_out
           puts out if out
