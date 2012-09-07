@@ -17,9 +17,9 @@ h4 { font-size: $baseFontSize * 1.1; }
 h5 { font-size: $baseFontSize * 0.9; }
 h6 { font-size: $baseFontSize * 0.8; }
 
-h4, h5, h6 {
-	line-height: $baseLineHeight;
-}
+// h4, h5, h6 {
+// 	line-height: $baseLineHeight;
+// }
 
 article {
 	h1, h2, h3, h4, h5, h6 {
@@ -44,6 +44,7 @@ article {
 	
 	dt {
 		margin-top: 1em;
+		margin-bottom: 0.3em;
 	}
 	
 	ul, ol {

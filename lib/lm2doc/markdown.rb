@@ -1,10 +1,16 @@
-require_relative 'source'
+require_relative 'converter'
+
 require "kramdown"
 require "nokogiri"
 
 module Lm2doc
   
-  class Markdown < Source
+  class Markdown < Converter
+    
+    def self.perfer_exts
+      %w[ .md ]
+    end
+    
     def convert
       html = Kramdown::Document.new(self.content, 
         coderay_line_numbers: :table,
@@ -15,7 +21,6 @@ module Lm2doc
       doc = Nokogiri::HTML::DocumentFragment.parse(html)
       
       figure_role(doc)
-      # down_heading(doc)
       doc.to_html
     end
     
@@ -33,12 +38,6 @@ module Lm2doc
       doc.css("h3").each {|n| n.name = "h4" }
       doc.css("h2").each {|n| n.name = "h3" }
       doc.css("h1").each {|n| n.name = "h2" }
-    end
-    
-    class << self
-      def perfer_exts
-        %w[ .md ]
-      end
     end
     
   end

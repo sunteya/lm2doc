@@ -3,7 +3,7 @@ require_relative "../lm2doc"
 
 module Lm2doc
   class Cli
-    attr_accessor :argv, :options
+    attr_accessor :argv, :inputs, :output
     
     def initialize(argv)
       self.argv = argv
@@ -13,39 +13,46 @@ module Lm2doc
       Lm2doc.theme("bootstrap")
     end
     
-    def parse
-      self.options = {
-        inputs: []
-      }
+    def parse_argv
+      self.inputs = []
       
       opts = OptionParser.new(self.argv.dup) do |opts|
-        opts.banner = "lm2doc is a converter for lightweight markup language to pretty html document."
+        opts.banner = "lm2doc is a convertor for lightweight markup language to pretty html document."
         opts.separator ""
         opts.separator "Usage:"
-        opts.separator "    lm2doc [OPTION]...[-i] DIR|FILE"
+        opts.separator "    lm2doc [OPTION]...[-i] FILE"
         opts.separator ""
         
         opts.separator "Options:"
         opts.on("-v", "--version", "show the version of lm2doc") { puts Lm2doc::VERSION; exit }
-        opts.on("-i", "--in DIR|FILE", "input path") {|v| options[:inputs] = [ v ] }
-        opts.on("-o", "--out DIR|FILE", "output path") {|v| options[:output] = v }
+        opts.on("-i", "--in FILE", "input path") {|v| self.inputs = [ v ] }
+        # opts.on("-o", "--out DIR|FILE", "output path") {|v| self.output = v }
       end
       
       others = opts.parse!
-      options[:inputs] = others
+      self.inputs = others
       
-      if options[:inputs].length != 1
+      if self.inputs.length != 1
         puts opts.help()
         exit
       end
     end
     
     def execute
-      self.parse
+      self.parse_argv
       
-      self.options[:inputs].each do |input|
-        theme.generate(input, options)
+      self.inputs.each do |input|
+        perfrom_source(input)
       end
     end
+    
+    def perfrom_source(source_file)
+      source = Resource::Source.build(source_file)
+      
+      output_dir = File.dirname(source_file)
+      FileUtils.mkdir_p(output_dir)
+      source.write(output_dir, :theme => theme)
+    end
+    
   end
 end
