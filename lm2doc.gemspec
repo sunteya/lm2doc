@@ -25,7 +25,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "coderay"
   
   gem.add_dependency "compass"
-  gem.add_dependency "bootstrap-sass"
+  gem.add_dependency "bootstrap-sass", "~> 2.1.0.0"
   
   
   # Test & Development
