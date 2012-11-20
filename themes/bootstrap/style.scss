@@ -74,8 +74,6 @@ article {
 	// 		border: 1px solid #999;
 	// 		padding: 0.5em;
 	// 	}
-		
-	// 	
 	// }
 		
 	table {
@@ -138,7 +136,7 @@ article {
 		
 		code {
 			font-size: inherit;
-			tab-size: 4;
+			@include experimental(tab-size, 4);
 		}
 	}
 	
