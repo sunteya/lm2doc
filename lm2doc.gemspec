@@ -19,8 +19,8 @@ Gem::Specification.new do |gem|
   gem.add_dependency "hashie"
   gem.add_dependency "nokogiri"
   
-  gem.add_dependency "kramdown"
-  gem.add_dependency "coderay"
+  gem.add_dependency "kramdown", "~> 0.14.0"
+  gem.add_dependency "pygments.rb", "~> 0.2.13"
   
   gem.add_dependency "compass"
   gem.add_dependency "bootstrap-sass", "~> 2.1.0.0"
@@ -28,7 +28,7 @@ Gem::Specification.new do |gem|
   
   # Test & Development
   gem.add_development_dependency "rake"
-  gem.add_development_dependency "pry"
+  gem.add_development_dependency "pry-nav"
   gem.add_development_dependency "version"
   
   gem.add_development_dependency "rspec"
