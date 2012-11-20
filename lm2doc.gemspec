@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "pygments.rb", "~> 0.2.13"
   
   gem.add_dependency "compass"
-  gem.add_dependency "bootstrap-sass", "~> 2.1.0.0"
+  gem.add_dependency "bootstrap-sass", "~> 2.2.1.1"
   
   
   # Test & Development
