@@ -1,12 +1,112 @@
 @import "compass";
 
-$baseFontSize: 16px;
+$baseFontSize: 15px;
 $baseLineHeight: $baseFontSize * 1.5;
-@import "bootstrap";
+// Core variables and mixins
+@import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap/mixins";
+
+// CSS Reset
+// @import "bootstrap/reset";
+
+// @media print {
+// 	* {
+// 		text-shadow: inherit !important;
+// 		color: inherit !important; // Black prints faster: h5bp.com/s
+// 		background: inherit !important;
+// 		box-shadow: inherit !important;
+// 	}
+// }
+
+
+// Grid system and page structure
+@import "bootstrap/scaffolding";
+@import "bootstrap/grid";
+@import "bootstrap/layouts";
+
+// Base CSS
+@import "bootstrap/type";
+@import "bootstrap/code";
+@import "bootstrap/forms";
+@import "bootstrap/tables";
+
+// Components: common
+@import "bootstrap/sprites";
+@import "bootstrap/dropdowns";
+@import "bootstrap/wells";
+@import "bootstrap/component-animations";
+@import "bootstrap/close";
+
+// Components: Buttons & Alerts
+@import "bootstrap/buttons";
+@import "bootstrap/button-groups";
+@import "bootstrap/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons
+
+// Components: Nav
+@import "bootstrap/navs";
+@import "bootstrap/navbar";
+@import "bootstrap/breadcrumbs";
+@import "bootstrap/pagination";
+@import "bootstrap/pager";
+
+// Components: Popovers
+@import "bootstrap/modals";
+@import "bootstrap/tooltip";
+@import "bootstrap/popovers";
+
+// Components: Misc
+@import "bootstrap/thumbnails";
+@import "bootstrap/media";
+@import "bootstrap/labels-badges";
+@import "bootstrap/progress-bars";
+@import "bootstrap/accordion";
+@import "bootstrap/carousel";
+@import "bootstrap/hero-unit";
+
+// Utility classes
+@import "bootstrap/utilities"; // Has to be last to override when necessary
+
+
+
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+@media print {
+	@page {
+		margin: 1cm;
+	}
+	
+	body {
+		    width: 19cm;
+		min-width: 19cm;
+		max-width: 19cm;
+	}
+	
+	img, .thumbnail {
+		page-break-inside: avoid;
+	}
+}
+
+@media screen {
+	html, body {
+		background: gray;
+	}
+	
+	body {
+		margin: 1cm auto;
+		width: 21cm;
+		min-height: 29.7cm;
+		@include box-sizing(border-box);
+		padding: 1cm;
+		background: white;
+		box-shadow: 0px 0px 0.5cm black;
+	}
+}
 
 body {
-	margin: 10px 30px;
-	width: 800px;
 }
 
 
@@ -84,6 +184,20 @@ article {
 			white-space: nowrap;
 		}
 	}
+	
+	pre {
+		font-size: $baseFontSize * 0.8;
+		white-space: pre;
+		word-break: normal;
+		word-wrap: normal;
+		overflow-x: auto;
+		line-height: 1.5;
+		
+		code {
+			font-size: inherit;
+			@include experimental(tab-size, 4);
+		}
+	}
 }
 
 
@@ -122,22 +236,11 @@ article {
 	}
 	
 	pre {
-		font-size: $baseFontSize * 0.8;
-		line-height: 1.5;
 		@include border-radius(0px);
 		border: none;
 		margin: 0;
 		padding: 0;
-		white-space: pre;
 		background: transparent;
-		overflow-x: auto;
-		word-break: normal;
-		word-wrap: normal;
-		
-		code {
-			font-size: inherit;
-			@include experimental(tab-size, 4);
-		}
 	}
 	
 	.c  { color: #999988; font-style: italic } /* Comment */
@@ -202,3 +305,9 @@ article {
 	.il { color: #009999 } /* Literal.Number.Integer.Long */
 }
 
+
+@media print {
+	.highlight pre {
+		overflow-x: hidden;
+	}
+}

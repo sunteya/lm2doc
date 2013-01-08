@@ -10,7 +10,7 @@ module Lm2doc
     end
     
     def theme
-      Lm2doc.theme("bootstrap")
+      Lm2doc.theme("simple")
     end
     
     def parse_argv
