@@ -98,12 +98,12 @@ article {
 			margin-left: 1.5em;
 			display: block;
 			
-			> code {
-				@extend .box;
-				display: inline-block;
-				line-height: $baseLineHeight;
-				font-size: 0.9em;
-			}
+			// > code {
+			// 	@extend .box;
+			// 	display: inline-block;
+			// 	line-height: $baseLineHeight;
+			// 	font-size: 0.9em;
+			// }
 		}
 	}
 	
@@ -115,7 +115,7 @@ article {
 		}
 	}
 	
-	p, li, td {
+	p, li, td, dd {
 		> code {
 			@extend .box;
 			color: rgb(221, 17, 68);
